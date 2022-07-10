@@ -16,15 +16,25 @@ class App extends React.Component {
         axios.get("https://api.adviceslip.com/advice")
         .then((response)=>{
             const{ advice } = response.data.slip;
-            console.log(advice);
+            this.setState({advice});
+            
         })
         .catch((error)=>{
             console.log("error");
         })
     };
     render() {
+        const {advice} = this.state;
         return(
-            <h1>app</h1>
+            <div className="app">
+                <div className="card">
+                <h1 className="heading">{advice}</h1>
+                <button className="button"  onClick={console.log("this.fetchAdvice")}>
+                    <span>Give Me Advice</span>
+
+                </button>
+                </div>
+            </div>
         );
     };
 };
